@@ -10,6 +10,28 @@ using SFML.Audio;
 using SFML.Graphics;
 
 namespace ClearixCore {
+    /// <summary>
+    /// The Asset Manager is responsible for loading all of the assets for a particular scope and providing hash lookup access to clients.
+    /// 
+    /// Types of assets are tightly intertwined with SFML. Custom asset types can be loaded by extending this class. However, asset types
+    /// which fall outside the purview of SFML don't have any means of being translated for use in Clearix. Ergo, classes that seek to
+    /// extend the functionality provided here will need to provide the following:
+    /// 
+    ///     1. Additional associative containers for the custom asset types.
+    ///     2. Adjacent framework for interpreting, leveraging, and lifecycling the custom asset types.
+    ///
+    /// Asset Manager attempts to load assets in an asynchronous fashion. It currently uses C#'s TAP pattern, but it's not obvious if the
+    /// program is actually loading the assets in an asynchronous manner or not. Without doubt, the actual opening of the archive file will
+    /// be on the main thread since there doesn't appear to be any method in System.IO.Compression for opening a ZIP file asynchronously.
+    /// The asynchronous operation actually occurs when the bytes of the current ZIP Entry are copied from the archive to memory. Once copied,
+    /// they're used to initialize SFML constructs which are then stored in their appropriate associative containers.
+    /// 
+    /// Each associative container that houses SFML constructs is available read-only to the public. There are also several other convenience 
+    /// members that can be used for monitoring and tracing the loading process as the asynchronous operations occur (similar to measuring
+    /// legacy threading operations).
+    /// 
+    /// 
+    /// </summary>
     class AssetManager {
         public Dictionary<string, Texture> Textures { get; }
 
