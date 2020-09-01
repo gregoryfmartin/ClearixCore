@@ -2109,11 +2109,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\greg\\source\\repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
+      "projectUniqueName": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
       "projectName": "ClearixCore",
-      "projectPath": "C:\\Users\\greg\\source\\repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
+      "projectPath": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
       "packagesPath": "C:\\Users\\greg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\greg\\source\\repos\\ClearixCore\\ClearixCore\\obj\\",
+      "outputPath": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -2172,7 +2172,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

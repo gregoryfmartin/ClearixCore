@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "nasQdAmT4fZo4X7EVKUSuem/kxVFS+itwaP/NT+zdjN20Ky5dxe2STXOs82DjgMgT4FBSw72gjyyQArw/rVraQ==",
+  "dgSpecHash": "yeCImuGGsDtxPaIR6svEkgRsKWmeNwlubSLPH0GE5jLXHmkE99zPxJ0/SCSCCQ1cIbAYKXd6FkYcyjCeELZY4Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\greg\\source\\repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
+  "projectFilePath": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\greg\\.nuget\\packages\\csfml\\2.5.0\\csfml.2.5.0.nupkg.sha512",
     "C:\\Users\\greg\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\greg\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\greg\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
-    "C:\\Users\\greg\\.nuget\\packages\\runtime.native.system.io.compression\\4.3.0\\runtime.native.system.io.compression.4.3.0.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\runtime.native.system.io.compression\\4.3.0\\runtime.native.system.io.compression.4.3.0.nupkg.sha512",
     "C:\\Users\\greg\\.nuget\\packages\\sfml.audio\\2.5.0\\sfml.audio.2.5.0.nupkg.sha512",
     "C:\\Users\\greg\\.nuget\\packages\\sfml.graphics\\2.5.0\\sfml.graphics.2.5.0.nupkg.sha512",
     "C:\\Users\\greg\\.nuget\\packages\\sfml.net\\2.5.0\\sfml.net.2.5.0.nupkg.sha512",

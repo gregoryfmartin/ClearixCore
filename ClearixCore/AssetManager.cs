@@ -21,7 +21,7 @@ namespace ClearixCore {
     ///     2. Adjacent framework for interpreting, leveraging, and lifecycling the custom asset types.
     ///
     /// Asset Manager attempts to load assets in an asynchronous fashion. It currently uses C#'s TAP pattern, but it's not obvious if the
-    /// program is actually loading the assets in an asynchronous manner or not. Without doubt, the actual opening of the archive file will
+    /// program is actually loading the assets in an asynchronous manner or not. Without doubt, the opening of the archive file will
     /// be on the main thread since there doesn't appear to be any method in System.IO.Compression for opening a ZIP file asynchronously.
     /// The asynchronous operation actually occurs when the bytes of the current ZIP Entry are copied from the archive to memory. Once copied,
     /// they're used to initialize SFML constructs which are then stored in their appropriate associative containers.
@@ -30,33 +30,75 @@ namespace ClearixCore {
     /// members that can be used for monitoring and tracing the loading process as the asynchronous operations occur (similar to measuring
     /// legacy threading operations).
     /// 
-    /// 
+    /// The Asset Manager also provides a method for monitoring the status of loading. It attempts to do this by enumerating the files in the target
+    /// archive that have valid extensions (generally, directories in the archive won't have extensions). The obvious problem with this is that if a
+    /// file is enumerated that has an extension type which isn't supported, it still counts toward the total number of assets that are to be loaded.
+    /// As of now, there's currently no known workaround for this.
     /// </summary>
     class AssetManager {
+        /// <summary>
+        /// The collection for all Textures this Asset Manager will handle.
+        /// </summary>
         public Dictionary<string, Texture> Textures { get; }
 
+        /// <summary>
+        /// The collection for all Fonts this Asset Manager will handle.
+        /// </summary>
         public Dictionary<string, Font> Fonts { get; }
 
+        /// <summary>
+        /// The collection for all SoundBuffers this Asset Manager will handle.
+        /// </summary>
         public Dictionary<string, SoundBuffer> SoundEffects { get; }
 
+        /// <summary>
+        /// The collection for all Musics this Asset Manager will handle.
+        /// </summary>
         public Dictionary<string, Music> Songs { get; }
 
+        /// <summary>
+        /// Accessor which states if the Asset Manager is currently loading assets or not.
+        /// </summary>
         public bool AssetsLoading { get { return assetsLoading; } }
 
+        /// <summary>
+        /// Accessor which states if the Asset Manager has finished loading assets or not.
+        /// </summary>
         public bool AssetsLoaded { get { return assetsLoaded; } }
 
+        /// <summary>
+        /// Accessor which states the total number of assets this Asset Manager has to load.
+        /// </summary>
         public int NumAssetsToLoad { get { return numAssetsToLoad; } }
 
+        /// <summary>
+        /// Accessor which states the total number of assets loaded thus far.
+        /// </summary>
         public int NumAssetsLoaded { get { return numAssetsLoaded; } }
 
+        /// <summary>
+        /// Internal variable for <see cref="AssetsLoading"/>.
+        /// </summary>
         private bool assetsLoading;
 
+        /// <summary>
+        /// Internal variable for <see cref="AssetsLoaded"/>.
+        /// </summary>
         private bool assetsLoaded;
 
+        /// <summary>
+        /// Internal variable for <see cref="NumAssetsToLoad"/>.
+        /// </summary>
         private int numAssetsToLoad;
 
+        /// <summary>
+        /// Internal variable for <see cref="NumAssetsLoaded"/>.
+        /// </summary>
         private int numAssetsLoaded;
 
+        /// <summary>
+        /// Default Constructor. Does nothing out of the ordinary.
+        /// </summary>
         public AssetManager () {
             Textures = new Dictionary<string, Texture> ();
             Fonts = new Dictionary<string, Font> ();
@@ -113,6 +155,12 @@ namespace ClearixCore {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entry"></param>
+        /// <returns></returns>
         private async Task<T> CopyAssetMem<T> (ZipArchiveEntry entry) {
             byte [] b;
             using (MemoryStream ms = new MemoryStream ()) {
