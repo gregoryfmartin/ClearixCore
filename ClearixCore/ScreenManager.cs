@@ -6,55 +6,81 @@ namespace ClearixCore {
     class ScreenManager {
         public List<Screen> Screens { get; }
 
-        public Screen CurrentScreen {
-            get {
-                return (from s in Screens where s.CurrentlyUsed select s).FirstOrDefault();
-            }
-        }
+        //public Screen CurrentScreen {
+        //    get {
+        //        return (from s in Screens where s.CurrentlyUsed select s).FirstOrDefault();
+        //    }
+        //}
+        public Screen CurrentScreen { get { return currentScreen; } }
+        private Screen currentScreen;
+
+        public Screen PreviousScreen { get { return previousScreen; } }
+        private Screen previousScreen;
 
         public ScreenManager() {
             Screens = new List<Screen>() {
-                new SampleScreen() {
-                    CurrentlyUsed = true
-                },
-                new AnotherScreen() {
-                    CurrentlyUsed = false
-                }
+                new SampleScreen(),
+                new AnotherScreen()
             };
+            currentScreen = Screens[0];
         }
 
         public void ChangeCurrentScreen(String screenName, GameWindow gameWindow) {
             Boolean foundScreen = false;
+            Screen r = null;
 
-            foreach (Screen s in Screens) {
-                if (s.Name.Equals(screenName)) {
+            foreach(Screen s in Screens) {
+                if(s.Name.Equals(screenName)) {
                     foundScreen = true;
+                    r = s;
                 }
             }
 
             if (foundScreen) {
-                if ((gameWindow.Renderables.Find(x => (x as Screen).Equals(CurrentScreen)) is Screen t)) {
-                    gameWindow.Renderables.Remove(t);
-                }
-
-                foreach (Screen s in Screens) {
-                    s.CurrentlyUsed = false;
-                }
-                foreach (Screen s in Screens) {
-                    if (s.Name.Equals(screenName)) {
-                        s.CurrentlyUsed = true;
+                if(currentScreen == null) {
+                    currentScreen = r;
+                    previousScreen = null;
+                } else {
+                    if ((gameWindow.Renderables.Find(x => (x as Screen).Equals(currentScreen)) is Screen t)) {
+                        gameWindow.Renderables.Remove(t);
                     }
+                    previousScreen = currentScreen;
+                    currentScreen = r;
                 }
-            } else {
-                return;
             }
+
+            //Boolean foundScreen = false;
+
+            //foreach (Screen s in Screens) {
+            //    if (s.Name.Equals(screenName)) {
+            //        foundScreen = true;
+            //    }
+            //}
+
+            //if (foundScreen) {
+            //    previousScreen = CurrentScreen;
+            //    if ((gameWindow.Renderables.Find(x => (x as Screen).Equals(CurrentScreen)) is Screen t)) {
+            //        gameWindow.Renderables.Remove(t);
+            //    }
+
+            //    foreach (Screen s in Screens) {
+            //        s.CurrentlyUsed = false;
+            //    }
+            //    foreach (Screen s in Screens) {
+            //        if (s.Name.Equals(screenName)) {
+            //            s.CurrentlyUsed = true;
+            //        }
+            //    }
+            //} else {
+            //    return;
+            //}
         }
 
         public void Update(Single delta, GameWindow gameWindow) {
-            CurrentScreen.Update(delta);
+            currentScreen.Update(delta);
 
-            if (!(gameWindow.Renderables.Find(x => (x as Screen).Equals(CurrentScreen)) is Screen t)) {
-                gameWindow.Renderables.Add(CurrentScreen);
+            if (!(gameWindow.Renderables.Find(x => (x as Screen).Equals(currentScreen)) is Screen t)) {
+                gameWindow.Renderables.Add(currentScreen);
             }
         }
 

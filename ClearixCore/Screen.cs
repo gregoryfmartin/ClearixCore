@@ -12,13 +12,13 @@ namespace ClearixCore {
 
         public String Name { get; set; }
 
-        public Boolean CurrentlyUsed { get; set; }
+        //public Boolean CurrentlyUsed { get; set; }
 
         protected Screen() {
             Assets = new AssetManager();
             Entities = new Dictionary<String, Entity>();
             Name = "";
-            CurrentlyUsed = false;
+            //CurrentlyUsed = false;
         }
 
         public abstract void Draw(RenderTarget target, RenderStates states);

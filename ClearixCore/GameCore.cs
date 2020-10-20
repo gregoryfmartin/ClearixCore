@@ -63,7 +63,11 @@ namespace ClearixCore {
                 running = false;
             }
             if (e.Code == Keyboard.Key.F6) {
-                screenManager.ChangeCurrentScreen("AnotherScreen", gameWindow);
+                if (screenManager.CurrentScreen.Name.Equals("SampleScreen")) {
+                    screenManager.ChangeCurrentScreen("AnotherScreen", gameWindow);
+                } else if (screenManager.CurrentScreen.Name.Equals("AnotherScreen")) {
+                    screenManager.ChangeCurrentScreen("SampleScreen", gameWindow);
+                }
             }
         }
 
