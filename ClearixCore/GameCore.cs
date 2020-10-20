@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using SFML.System;
 using SFML.Window;
 
 namespace ClearixCore {
     class GameCore {
-        private bool running;
+        private Boolean running;
         private Clock clock;
         private GameWindow gameWindow;
-        private float fpsd;
+        private Single fpsd;
         private ScreenManager screenManager;
 
         public GameCore() {
@@ -20,57 +18,61 @@ namespace ClearixCore {
             screenManager = null;
         }
 
-        public void Run () {
-            Init ();
+        public void Run() {
+            Init();
 
-            while(running) {
-                fpsd = clock.Restart ().AsSeconds ();
+            while (running) {
+                fpsd = clock.Restart().AsSeconds();
 
-                Update ();
-                Draw ();
+                Update();
+                Draw();
             }
 
-            Deinit ();
+            Deinit();
         }
 
         private void Init() {
-            gameWindow = new GameWindow ();
-            gameWindow.SetFramerateLimit (60);
-            gameWindow.SetVerticalSyncEnabled (true);
+            gameWindow = new GameWindow();
+            gameWindow.SetFramerateLimit(60);
+            gameWindow.SetVerticalSyncEnabled(true);
             gameWindow.KeyDownHandler += CheckGlobalInput;
             gameWindow.KeyDownHandler += CheckPlayerInputPressed;
             gameWindow.KeyUpHandler += CheckPlayerInputReleased;
 
-            screenManager = new ScreenManager ();
+            screenManager = new ScreenManager();
 
-            clock = new Clock ();
+            clock = new Clock();
         }
 
         private void Update() {
-            gameWindow.Update (fpsd);
-            screenManager.CurrentScreen.Update (fpsd);
-            gameWindow.Renderables.Add (screenManager.CurrentScreen);
+            gameWindow.Update(fpsd);
+            screenManager.Update(fpsd, gameWindow);
+            //gameWindow.Renderables.Add(screenManager.CurrentScreen);
         }
 
         private void Draw() {
-            gameWindow.Draw ();
+            gameWindow.Draw();
         }
 
         private void Deinit() {
-            gameWindow.Close ();
+            gameWindow.Close();
         }
 
-        private void CheckGlobalInput(object sender, KeyEventArgs e) {
-            if (e.Code == Keyboard.Key.Escape)
+        private void CheckGlobalInput(Object sender, KeyEventArgs e) {
+            if (e.Code == Keyboard.Key.Escape) {
                 running = false;
+            }
+            if (e.Code == Keyboard.Key.F6) {
+                screenManager.ChangeCurrentScreen("AnotherScreen", gameWindow);
+            }
         }
 
-        private void CheckPlayerInputPressed(object sender, KeyEventArgs e) {
-            screenManager.CurrentScreen.CheckPlayerInputPressed (sender, e);
+        private void CheckPlayerInputPressed(Object sender, KeyEventArgs e) {
+            screenManager.CurrentScreen.CheckPlayerInputPressed(sender, e);
         }
 
-        private void CheckPlayerInputReleased(object sender, KeyEventArgs e) {
-            screenManager.CurrentScreen.CheckPlayerInputReleased (sender, e);
+        private void CheckPlayerInputReleased(Object sender, KeyEventArgs e) {
+            screenManager.CurrentScreen.CheckPlayerInputReleased(sender, e);
         }
     }
 }

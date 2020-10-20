@@ -5,10 +5,10 @@ using SFML.Graphics;
 using SFML.System;
 
 namespace ClearixCore {
-    class SampleScreen : ScreenBase {
-        public SampleScreen() : base() {
-            Name = "SampleScreen";
-            LoadAssets(@".\SampleScreen.zip");
+    class AnotherScreen  : ScreenBase {
+        public AnotherScreen() : base() {
+            Name = "AnotherScreen";
+            LoadAssets(@".\AnotherScreen.zip");
             Entities.Add("PlayerObject", new PlayerEntity() {
                 Texture = Assets.Textures["BlippiSquare"],
                 TextureRect = new IntRect() {

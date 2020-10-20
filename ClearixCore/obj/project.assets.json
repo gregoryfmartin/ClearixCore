@@ -2103,25 +2103,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\greg\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\greg\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
+      "projectUniqueName": "C:\\Users\\greg\\Source\\Repos\\gregoryfmartin\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
       "projectName": "ClearixCore",
-      "projectPath": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
+      "projectPath": "C:\\Users\\greg\\Source\\Repos\\gregoryfmartin\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
       "packagesPath": "C:\\Users\\greg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\obj\\",
+      "outputPath": "C:\\Users\\greg\\Source\\Repos\\gregoryfmartin\\ClearixCore\\ClearixCore\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\greg\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -2172,7 +2167,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
