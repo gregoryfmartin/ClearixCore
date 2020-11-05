@@ -47,7 +47,6 @@ namespace ClearixCore {
         private void Update() {
             gameWindow.Update(fpsd);
             screenManager.Update(fpsd, gameWindow);
-            //gameWindow.Renderables.Add(screenManager.CurrentScreen);
         }
 
         private void Draw() {
@@ -68,6 +67,9 @@ namespace ClearixCore {
                 } else if (screenManager.CurrentScreen.Name.Equals("AnotherScreen")) {
                     screenManager.ChangeCurrentScreen("SampleScreen", gameWindow);
                 }
+            }
+            if (e.Code == Keyboard.Key.F7) {
+                screenManager.CurrentScreen.Active = !screenManager.CurrentScreen.Active;
             }
         }
 

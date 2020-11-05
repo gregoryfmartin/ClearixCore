@@ -12,25 +12,28 @@ namespace ClearixCore {
 
         public String Name { get; set; }
 
+        public Boolean Active { get; set; }
+
         //public Boolean CurrentlyUsed { get; set; }
 
-        protected Screen() {
-            Assets = new AssetManager();
-            Entities = new Dictionary<String, Entity>();
-            Name = "";
+        protected Screen () {
+            this.Assets = new AssetManager ();
+            this.Entities = new Dictionary<String, Entity> ();
+            this.Name = "";
+            this.Active = false;
             //CurrentlyUsed = false;
         }
 
-        public abstract void Draw(RenderTarget target, RenderStates states);
+        public abstract void Draw ( RenderTarget target, RenderStates states );
 
-        public abstract void LoadAssets(String archiveFile);
+        public abstract void LoadAssets ( String archiveFile );
 
-        public abstract void Update(Single delta);
+        public abstract void Update ( Single delta );
 
-        public abstract void CheckGlobalInput(Object sender, KeyEventArgs e);
+        public abstract void CheckGlobalInput ( Object sender, KeyEventArgs e );
 
-        public abstract void CheckPlayerInputPressed(Object sender, KeyEventArgs e);
+        public abstract void CheckPlayerInputPressed ( Object sender, KeyEventArgs e );
 
-        public abstract void CheckPlayerInputReleased(Object sender, KeyEventArgs e);
+        public abstract void CheckPlayerInputReleased ( Object sender, KeyEventArgs e );
     }
 }

@@ -2108,11 +2108,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\greg\\Source\\Repos\\gregoryfmartin\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
+      "projectUniqueName": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
       "projectName": "ClearixCore",
-      "projectPath": "C:\\Users\\greg\\Source\\Repos\\gregoryfmartin\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
+      "projectPath": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
       "packagesPath": "C:\\Users\\greg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\greg\\Source\\Repos\\gregoryfmartin\\ClearixCore\\ClearixCore\\obj\\",
+      "outputPath": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\greg\\AppData\\Roaming\\NuGet\\NuGet.Config",

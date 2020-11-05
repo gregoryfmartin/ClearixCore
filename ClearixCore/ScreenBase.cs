@@ -11,27 +11,31 @@ namespace ClearixCore {
     /// over and over again.
     /// </summary>
     class ScreenBase : Screen {
-        public override void CheckGlobalInput(Object sender, KeyEventArgs e) {
+        public override void CheckGlobalInput ( Object sender, KeyEventArgs e ) {
             return;
         }
 
-        public override void CheckPlayerInputPressed(Object sender, KeyEventArgs e) {
-            (Entities["PlayerObject"] as PlayerEntity)?.CheckInputPressed(e);
+        public override void CheckPlayerInputPressed ( Object sender, KeyEventArgs e ) {
+            if (this.Active) {
+                (Entities ["PlayerObject"] as PlayerEntity)?.CheckInputPressed (e);
+            }
         }
 
-        public override void CheckPlayerInputReleased(Object sender, KeyEventArgs e) {
-            (Entities["PlayerObject"] as PlayerEntity)?.CheckInputReleased(e);
+        public override void CheckPlayerInputReleased ( Object sender, KeyEventArgs e ) {
+            if (this.Active) {
+                (Entities ["PlayerObject"] as PlayerEntity)?.CheckInputReleased (e);
+            }
         }
 
-        public override void Draw(RenderTarget target, RenderStates states) {
+        public override void Draw ( RenderTarget target, RenderStates states ) {
             return;
         }
 
-        public override void LoadAssets(String archiveFile) {
+        public override void LoadAssets ( String archiveFile ) {
             return;
         }
 
-        public override void Update(Single delta) {
+        public override void Update ( Single delta ) {
             return;
         }
     }
