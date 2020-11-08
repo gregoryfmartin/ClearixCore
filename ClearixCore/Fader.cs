@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using SFML.Graphics;
 using SFML.System;
@@ -37,12 +35,14 @@ namespace ClearixCore {
             this.State = FaderState.TRANSPARENT;
             this.Action = FaderAction.IDLE;
             this.FillColor = new Color (255, 255, 255, 0);
+            this.Speed = FaderSpeed.MEDIUM;
         }
 
         public Fader ( Vector2f size ) : base (size) {
             this.State = FaderState.TRANSPARENT;
             this.Action = FaderAction.IDLE;
             this.FillColor = new Color (255, 255, 255, 0);
+            this.Speed = FaderSpeed.MEDIUM;
         }
 
         public void Update ( Single delta ) {

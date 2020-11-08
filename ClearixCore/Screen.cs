@@ -14,6 +14,12 @@ namespace ClearixCore {
 
         public Boolean Active { get; set; }
 
+        public View Camera { get; }
+
+        protected float cameraRotation;
+
+        protected float cameraScalar;
+
         //public Boolean CurrentlyUsed { get; set; }
 
         protected Screen () {
@@ -21,6 +27,9 @@ namespace ClearixCore {
             this.Entities = new Dictionary<String, Entity> ();
             this.Name = "";
             this.Active = false;
+            this.Camera = new View ();
+            this.cameraRotation = 0.0f;
+            this.cameraScalar = 1.0f;
             //CurrentlyUsed = false;
         }
 

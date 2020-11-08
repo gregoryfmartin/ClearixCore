@@ -1,0 +1,2 @@
+cd /d "C:\Users\greg\Source\Repos\ClearixCore\ClearixCore" &msbuild "ClearixCore.csproj" /t:sdvViewer /p:configuration="Debug" /p:platform="Any CPU" /p:SolutionDir="C:\Users\greg\Source\Repos\ClearixCore" 
+exit %errorlevel% 

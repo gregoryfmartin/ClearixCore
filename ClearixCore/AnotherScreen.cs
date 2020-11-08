@@ -22,6 +22,7 @@ namespace ClearixCore {
         }
 
         public override void Draw(RenderTarget target, RenderStates states) {
+            base.Draw (target, states);
             foreach (KeyValuePair<String, Entity> kvp in Entities) {
                 target.Draw(kvp.Value);
             }
@@ -35,6 +36,8 @@ namespace ClearixCore {
             foreach (KeyValuePair<String, Entity> kvp in Entities) {
                 kvp.Value.Update(delta);
             }
+
+            Console.WriteLine ($"Camera Size for Screen {this.Name}: {this.Camera.Size.X}, {this.Camera.Size.Y}");
         }
     }
 }

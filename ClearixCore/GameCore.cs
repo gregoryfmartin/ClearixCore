@@ -4,11 +4,34 @@ using SFML.System;
 using SFML.Window;
 
 namespace ClearixCore {
+    /// <summary>
+    /// Represents the governor for the engine itself. This is essentially the bottom-layer of the engine
+    /// that operates the rest of the abstractions on higher levels.
+    /// </summary>
     class GameCore {
+        /// <summary>
+        /// States if the game is running or not. This is the governor for the game loop.
+        /// </summary>
         private Boolean running;
+
+        /// <summary>
+        /// The primary game clock.
+        /// </summary>
         private Clock clock;
+
+        /// <summary>
+        /// The primary render window that the user will interact with.
+        /// </summary>
         private GameWindow gameWindow;
+
+        /// <summary>
+        /// FPS Delta; obtained each frame.
+        /// </summary>
         private Single fpsd;
+
+        /// <summary>
+        /// A ScreenManager instance for managing screens.
+        /// </summary>
         private ScreenManager screenManager;
 
         public GameCore () {
@@ -50,7 +73,7 @@ namespace ClearixCore {
         }
 
         private void Draw () {
-            gameWindow.Draw ();
+            gameWindow.DrawStuff ();
         }
 
         private void Deinit () {
@@ -80,6 +103,7 @@ namespace ClearixCore {
                     gameWindow.fader.Action = FaderAction.FADING;
                 }
             }
+            screenManager.CurrentScreen.CheckGlobalInput (sender, e);
         }
 
         private void CheckPlayerInputPressed ( Object sender, KeyEventArgs e ) {

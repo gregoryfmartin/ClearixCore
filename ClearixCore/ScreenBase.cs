@@ -12,7 +12,16 @@ namespace ClearixCore {
     /// </summary>
     class ScreenBase : Screen {
         public override void CheckGlobalInput ( Object sender, KeyEventArgs e ) {
-            return;
+            if (e.Code == Keyboard.Key.Y) {
+                this.cameraRotation = -5.0f;
+            } else if (e.Code == Keyboard.Key.U) {
+                this.cameraRotation = 5.0f;
+            }
+            if (e.Code == Keyboard.Key.H) {
+                this.cameraScalar = -0.001f;
+            } else if (e.Code == Keyboard.Key.J) {
+                this.cameraScalar = 0.001f;
+            }
         }
 
         public override void CheckPlayerInputPressed ( Object sender, KeyEventArgs e ) {
@@ -28,7 +37,10 @@ namespace ClearixCore {
         }
 
         public override void Draw ( RenderTarget target, RenderStates states ) {
-            return;
+            this.Camera.Rotate (this.cameraRotation);
+            this.Camera.Zoom (this.cameraScalar);
+            this.Camera.Viewport = new FloatRect (0.0f, 0.0f, 200.0f, 200.0f);
+            target.SetView (this.Camera);
         }
 
         public override void LoadAssets ( String archiveFile ) {
