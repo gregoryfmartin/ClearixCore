@@ -36,7 +36,7 @@ namespace ClearixCore {
                     currentScreen = r;
                     previousScreen = null;
                 } else {
-                    if ((gameWindow.Renderables.Find (x => (x as Screen).Equals (currentScreen)) is Screen t)) {
+                    if ((gameWindow.Renderables.Find (x => x is Screen && (x as Screen).Equals (currentScreen)) is Screen t)) {
                         gameWindow.Renderables.Remove (t);
                     }
                     previousScreen = currentScreen;
@@ -48,9 +48,12 @@ namespace ClearixCore {
         public void Update ( Single delta, GameWindow gameWindow ) {
             currentScreen.Update (delta);
 
-            if (!(gameWindow.Renderables.Find (x => (x as Screen).Equals (currentScreen)) is Screen t)) {
+            if (!(gameWindow.Renderables.Find (x => x is Screen && (x as Screen).Equals (currentScreen)) is Screen t)) {
                 gameWindow.Renderables.Add (currentScreen);
             }
+            //if (!(gameWindow.Renderables.Find (x => (x as Screen).Equals (currentScreen)) is Screen t)) {
+            //    gameWindow.Renderables.Add (currentScreen);
+            //}
         }
     }
 }
