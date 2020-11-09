@@ -12,12 +12,12 @@ namespace ClearixCore {
         /// <summary>
         /// Does nothing other than call the superclass constructor.
         /// </summary>
-        protected Entity() : base() { }
+        protected Entity () : base () { }
 
         /// <summary>
         /// Contains any update logic.
         /// </summary>
         /// <param name="delta">Delta between frames.</param>
-        public abstract void Update(Single delta);
+        public abstract void Update (Single delta);
     }
 }

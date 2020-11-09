@@ -35,83 +35,83 @@ namespace ClearixCore {
         private ScreenManager screenManager;
 
         public GameCore () {
-            running = true;
-            clock = null;
-            gameWindow = null;
-            screenManager = null;
+            this.running = true;
+            this.clock = null;
+            this.gameWindow = null;
+            this.screenManager = null;
         }
 
         public void Run () {
-            Init ();
+            this.Init ();
 
-            while (running) {
-                fpsd = clock.Restart ().AsSeconds ();
+            while (this.running) {
+                this.fpsd = this.clock.Restart ().AsSeconds ();
 
-                Update ();
-                Draw ();
+                this.Update ();
+                this.Draw ();
             }
 
-            Deinit ();
+            this.Deinit ();
         }
 
         private void Init () {
-            gameWindow = new GameWindow ();
-            gameWindow.SetFramerateLimit (60);
-            gameWindow.SetVerticalSyncEnabled (true);
-            gameWindow.KeyDownHandler += CheckGlobalInput;
-            gameWindow.KeyDownHandler += CheckPlayerInputPressed;
-            gameWindow.KeyUpHandler += CheckPlayerInputReleased;
+            this.gameWindow = new GameWindow ();
+            this.gameWindow.SetFramerateLimit (60);
+            this.gameWindow.SetVerticalSyncEnabled (true);
+            this.gameWindow.KeyDownHandler += CheckGlobalInput;
+            this.gameWindow.KeyDownHandler += CheckPlayerInputPressed;
+            this.gameWindow.KeyUpHandler += CheckPlayerInputReleased;
 
-            screenManager = new ScreenManager ();
+            this.screenManager = new ScreenManager ();
 
-            clock = new Clock ();
+            this.clock = new Clock ();
         }
 
         private void Update () {
-            gameWindow.Update (fpsd);
-            screenManager.Update (fpsd, gameWindow);
+            this.gameWindow.Update (this.fpsd);
+            this.screenManager.Update (this.fpsd, this.gameWindow);
         }
 
         private void Draw () {
-            gameWindow.DrawStuff ();
+            this.gameWindow.DrawStuff ();
         }
 
         private void Deinit () {
-            gameWindow.Close ();
+            this.gameWindow.Close ();
         }
 
-        private void CheckGlobalInput ( Object sender, KeyEventArgs e ) {
+        private void CheckGlobalInput (Object sender, KeyEventArgs e) {
             if (e.Code == Keyboard.Key.Escape) {
-                running = false;
+                this.running = false;
             }
             if (e.Code == Keyboard.Key.F6) {
-                if (screenManager.CurrentScreen.Name.Equals ("SampleScreen")) {
-                    screenManager.ChangeCurrentScreen ("AnotherScreen", gameWindow);
-                } else if (screenManager.CurrentScreen.Name.Equals ("AnotherScreen")) {
-                    screenManager.ChangeCurrentScreen ("SampleScreen", gameWindow);
+                if (this.screenManager.CurrentScreen.Name.Equals ("SampleScreen")) {
+                    this.screenManager.ChangeCurrentScreen ("AnotherScreen", this.gameWindow);
+                } else if (this.screenManager.CurrentScreen.Name.Equals ("AnotherScreen")) {
+                    this.screenManager.ChangeCurrentScreen ("SampleScreen", this.gameWindow);
                 }
             }
             if (e.Code == Keyboard.Key.F7) {
-                screenManager.CurrentScreen.Active = !screenManager.CurrentScreen.Active;
+                this.screenManager.CurrentScreen.Active = !this.screenManager.CurrentScreen.Active;
             }
             if (e.Code == Keyboard.Key.F8) {
-                FaderAction action = gameWindow.fader.Action;
+                FaderAction action = this.gameWindow.MyFader.Action;
 
                 if (action == FaderAction.FADING) {
-                    gameWindow.fader.Action = FaderAction.IDLE;
+                    this.gameWindow.MyFader.Action = FaderAction.IDLE;
                 } else {
-                    gameWindow.fader.Action = FaderAction.FADING;
+                    this.gameWindow.MyFader.Action = FaderAction.FADING;
                 }
             }
-            screenManager.CurrentScreen.CheckGlobalInput (sender, e);
+            this.screenManager.CurrentScreen.CheckGlobalInput (sender, e);
         }
 
-        private void CheckPlayerInputPressed ( Object sender, KeyEventArgs e ) {
-            screenManager.CurrentScreen.CheckPlayerInputPressed (sender, e);
+        private void CheckPlayerInputPressed (Object sender, KeyEventArgs e) {
+            this.screenManager.CurrentScreen.CheckPlayerInputPressed (sender, e);
         }
 
-        private void CheckPlayerInputReleased ( Object sender, KeyEventArgs e ) {
-            screenManager.CurrentScreen.CheckPlayerInputReleased (sender, e);
+        private void CheckPlayerInputReleased (Object sender, KeyEventArgs e) {
+            this.screenManager.CurrentScreen.CheckPlayerInputReleased (sender, e);
         }
     }
 }

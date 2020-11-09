@@ -11,7 +11,7 @@ namespace ClearixCore {
     /// over and over again.
     /// </summary>
     class ScreenBase : Screen {
-        public override void CheckGlobalInput ( Object sender, KeyEventArgs e ) {
+        public override void CheckGlobalInput (Object sender, KeyEventArgs e) {
             if (e.Code == Keyboard.Key.Y) {
                 this.cameraRotation = -5.0f;
             } else if (e.Code == Keyboard.Key.U) {
@@ -24,30 +24,30 @@ namespace ClearixCore {
             }
         }
 
-        public override void CheckPlayerInputPressed ( Object sender, KeyEventArgs e ) {
+        public override void CheckPlayerInputPressed (Object sender, KeyEventArgs e) {
             if (this.Active) {
-                (Entities ["PlayerObject"] as PlayerEntity)?.CheckInputPressed (e);
+                (this.Entities ["PlayerObject"] as PlayerEntity)?.CheckInputPressed (e);
             }
         }
 
-        public override void CheckPlayerInputReleased ( Object sender, KeyEventArgs e ) {
+        public override void CheckPlayerInputReleased (Object sender, KeyEventArgs e) {
             if (this.Active) {
-                (Entities ["PlayerObject"] as PlayerEntity)?.CheckInputReleased (e);
+                (this.Entities ["PlayerObject"] as PlayerEntity)?.CheckInputReleased (e);
             }
         }
 
-        public override void Draw ( RenderTarget target, RenderStates states ) {
+        public override void Draw (RenderTarget target, RenderStates states) {
             this.Camera.Rotate (this.cameraRotation);
             this.Camera.Zoom (this.cameraScalar);
             this.Camera.Viewport = new FloatRect (0.0f, 0.0f, 200.0f, 200.0f);
             target.SetView (this.Camera);
         }
 
-        public override void LoadAssets ( String archiveFile ) {
+        public override void LoadAssets (String archiveFile) {
             return;
         }
 
-        public override void Update ( Single delta ) {
+        public override void Update (Single delta) {
             return;
         }
     }

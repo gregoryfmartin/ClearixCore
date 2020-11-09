@@ -9,46 +9,46 @@ namespace ClearixCore {
     class GameWindow : RenderWindow {
         public List<Drawable> Renderables { get; }
 
-        public delegate void KDH ( Object sender, KeyEventArgs e );
+        public delegate void KDH (Object sender, KeyEventArgs e);
 
-        public delegate void KUH ( Object sender, KeyEventArgs e );
+        public delegate void KUH (Object sender, KeyEventArgs e);
 
         public KDH KeyDownHandler { get; set; }
 
         public KUH KeyUpHandler { get; set; }
 
-        public Fader fader;
+        public Fader MyFader;
 
         public GameWindow () : base (new VideoMode (800, 600), "") {
-            Renderables = new List<Drawable> ();
+            this.Renderables = new List<Drawable> ();
 
-            KeyPressed += ( s, e ) => { KeyDownHandler (s, e); };
-            KeyReleased += ( s, e ) => { KeyUpHandler (s, e); };
+            this.KeyPressed += (s, e) => { this.KeyDownHandler (s, e); };
+            this.KeyReleased += (s, e) => { this.KeyUpHandler (s, e); };
 
-            KeyDownHandler += ( s, e ) => { };
-            KeyUpHandler += ( s, e ) => { };
+            this.KeyDownHandler += (s, e) => { };
+            this.KeyUpHandler += (s, e) => { };
 
-            this.fader = new Fader (new Vector2f (900.0f, 700.0f));
+            this.MyFader = new Fader (new Vector2f (900.0f, 700.0f));
         }
 
-        public void Update ( Single delta ) {
-            this.fader.Update (delta);
-            DispatchEvents ();
+        public void Update (Single delta) {
+            this.MyFader.Update (delta);
+            this.DispatchEvents ();
         }
 
         public void DrawStuff () {
-            Clear (Color.Black);
+            this.Clear (Color.Black);
 
-            if (Renderables.Count >= 1) {
-                foreach (Drawable d in Renderables) {
+            if (this.Renderables.Count >= 1) {
+                foreach (Drawable d in this.Renderables) {
                     this.Draw (d);
                 }
             }
 
             this.SetView (this.DefaultView);
-            this.Draw (this.fader);
+            this.Draw (this.MyFader);
 
-            Display ();
+            this.Display ();
         }
     }
 }

@@ -99,14 +99,14 @@ namespace ClearixCore {
         /// Default Constructor. Does nothing out of the ordinary.
         /// </summary>
         public AssetManager() {
-            Textures = new Dictionary<String, Texture>();
-            Fonts = new Dictionary<String, Font>();
-            SoundEffects = new Dictionary<String, SoundBuffer>();
-            Songs = new Dictionary<String, Music>();
-            assetsLoading = false;
-            assetsLoaded = false;
-            numAssetsToLoad = 0;
-            numAssetsLoaded = 0;
+            this.Textures = new Dictionary<String, Texture>();
+            this.Fonts = new Dictionary<String, Font>();
+            this.SoundEffects = new Dictionary<String, SoundBuffer>();
+            this.Songs = new Dictionary<String, Music>();
+            this.assetsLoading = false;
+            this.assetsLoaded = false;
+            this.numAssetsToLoad = 0;
+            this.numAssetsLoaded = 0;
         }
 
         /// <summary>
@@ -144,19 +144,19 @@ namespace ClearixCore {
                             case "png":
                             case "jpg":
                             case "jpeg":
-                                Textures.Add(fname[0], (CopyAssetMem<Texture>(entry)).Result);
+                                this.Textures.Add(fname[0], (this.CopyAssetMem<Texture>(entry)).Result);
                                 //numAssetsLoaded++;
                                 break;
                             case "otf":
-                                Fonts.Add(fname[0], (CopyAssetMem<Font>(entry)).Result);
+                                this.Fonts.Add(fname[0], (this.CopyAssetMem<Font>(entry)).Result);
                                 //numAssetsLoaded++;
                                 break;
                             case "ogg":
-                                Songs.Add(fname[0], (CopyAssetMem<Music>(entry)).Result);
+                                this.Songs.Add(fname[0], (this.CopyAssetMem<Music>(entry)).Result);
                                 //numAssetsLoaded++;
                                 break;
                             case "wav":
-                                SoundEffects.Add(fname[0], (CopyAssetMem<SoundBuffer>(entry)).Result);
+                                this.SoundEffects.Add(fname[0], (this.CopyAssetMem<SoundBuffer>(entry)).Result);
                                 //numAssetsLoaded++;
                                 break;
                             default:
@@ -189,8 +189,7 @@ namespace ClearixCore {
                 await entry.Open().CopyToAsync(ms);
                 b = ms.ToArray();
             }
-
-            numAssetsLoaded++;
+            this.numAssetsLoaded++;
 
             return (T)Activator.CreateInstance(typeof(T), b);
         }

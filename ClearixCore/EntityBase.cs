@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClearixCore {
     class EntityBase : Entity {
-        public override void Update ( Single delta ) {
+        public override void Update (Single delta) {
             return;
         }
     }

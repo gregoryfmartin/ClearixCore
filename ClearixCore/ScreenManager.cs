@@ -13,18 +13,18 @@ namespace ClearixCore {
         private Screen previousScreen;
 
         public ScreenManager () {
-            Screens = new List<Screen> () {
+            this.Screens = new List<Screen> () {
                 new SampleScreen(),
                 new AnotherScreen()
             };
-            currentScreen = Screens [0];
+            this.currentScreen = this.Screens [0];
         }
 
-        public void ChangeCurrentScreen ( String screenName, GameWindow gameWindow ) {
+        public void ChangeCurrentScreen (String screenName, GameWindow gameWindow) {
             Boolean foundScreen = false;
             Screen r = null;
 
-            foreach (Screen s in Screens) {
+            foreach (Screen s in this.Screens) {
                 if (s.Name.Equals (screenName)) {
                     foundScreen = true;
                     r = s;
@@ -32,24 +32,24 @@ namespace ClearixCore {
             }
 
             if (foundScreen) {
-                if (currentScreen == null) {
-                    currentScreen = r;
-                    previousScreen = null;
+                if (this.currentScreen == null) {
+                    this.currentScreen = r;
+                    this.previousScreen = null;
                 } else {
-                    if ((gameWindow.Renderables.Find (x => x is Screen && (x as Screen).Equals (currentScreen)) is Screen t)) {
+                    if ((gameWindow.Renderables.Find (x => x is Screen && (x as Screen).Equals (this.currentScreen)) is Screen t)) {
                         gameWindow.Renderables.Remove (t);
                     }
-                    previousScreen = currentScreen;
-                    currentScreen = r;
+                    this.previousScreen = this.currentScreen;
+                    this.currentScreen = r;
                 }
             }
         }
 
-        public void Update ( Single delta, GameWindow gameWindow ) {
-            currentScreen.Update (delta);
+        public void Update (Single delta, GameWindow gameWindow) {
+            this.currentScreen.Update (delta);
 
-            if (!(gameWindow.Renderables.Find (x => x is Screen && (x as Screen).Equals (currentScreen)) is Screen t)) {
-                gameWindow.Renderables.Add (currentScreen);
+            if (!(gameWindow.Renderables.Find (x => x is Screen && (x as Screen).Equals (this.currentScreen)) is Screen t)) {
+                gameWindow.Renderables.Add (this.currentScreen);
             }
             //if (!(gameWindow.Renderables.Find (x => (x as Screen).Equals (currentScreen)) is Screen t)) {
             //    gameWindow.Renderables.Add (currentScreen);

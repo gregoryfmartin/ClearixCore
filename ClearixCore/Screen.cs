@@ -33,16 +33,16 @@ namespace ClearixCore {
             //CurrentlyUsed = false;
         }
 
-        public abstract void Draw ( RenderTarget target, RenderStates states );
+        public abstract void Draw (RenderTarget target, RenderStates states);
 
-        public abstract void LoadAssets ( String archiveFile );
+        public abstract void LoadAssets (String archiveFile);
 
-        public abstract void Update ( Single delta );
+        public abstract void Update (Single delta);
 
-        public abstract void CheckGlobalInput ( Object sender, KeyEventArgs e );
+        public abstract void CheckGlobalInput (Object sender, KeyEventArgs e);
 
-        public abstract void CheckPlayerInputPressed ( Object sender, KeyEventArgs e );
+        public abstract void CheckPlayerInputPressed (Object sender, KeyEventArgs e);
 
-        public abstract void CheckPlayerInputReleased ( Object sender, KeyEventArgs e );
+        public abstract void CheckPlayerInputReleased (Object sender, KeyEventArgs e);
     }
 }
