@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dd+qLeikJlSHb8v5u0DmgzAmgybr8mmj+jUwkxZdR9HyB/n8daT9PRlcJNt+Mm/juhU2B01h86NZTwk60RjwyQ==",
+  "dgSpecHash": "8ozVB4Zdh2e53IjKmQ+FQLtF2Sdxayonu+jTZ8t30T/B3/jXZE78eUe/e+EmEvZDi9tTv25x7SvlEtj4bJX6Uw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\greg\\Source\\Repos\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
+  "projectFilePath": "C:\\Users\\greg\\Source\\Repos\\gregoryfmartin\\ClearixCore\\ClearixCore\\ClearixCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\greg\\.nuget\\packages\\csfml\\2.5.0\\csfml.2.5.0.nupkg.sha512",
     "C:\\Users\\greg\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
