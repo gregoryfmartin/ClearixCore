@@ -9,6 +9,15 @@ namespace ClearixCore {
         public AnotherScreen() : base() {
             Name = "AnotherScreen";
             LoadAssets(@".\AnotherScreen.zip");
+
+            ///
+            /// If the following statement follows the one below it, the background entity is drawn above the other entities. I'll need to construct
+            /// a layering construct soon to ensure that the drawing is performed the way I want it done.
+            ///
+            Entities.Add("Background", new EntityBase() {
+                Texture = Assets.Textures["BG1Downscaled"],
+                Position = new Vector2f(0.0f, 0.0f)
+            });
             Entities.Add("PlayerObject", new PlayerEntity() {
                 Texture = Assets.Textures["BlippiSquare"],
                 TextureRect = new IntRect() {

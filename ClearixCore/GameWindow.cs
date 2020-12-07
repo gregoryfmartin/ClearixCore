@@ -19,7 +19,7 @@ namespace ClearixCore {
 
         //public RectangleShape Fader { get; }
 
-        private Single deltaCounter;
+        //private Single deltaCounter;
 
         public Fader fader;
 
