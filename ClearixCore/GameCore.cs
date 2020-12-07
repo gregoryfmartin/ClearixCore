@@ -69,7 +69,7 @@ namespace ClearixCore {
                 }
             }
             if (e.Code == Keyboard.Key.F7) {
-                screenManager.CurrentScreen.Active = !screenManager.CurrentScreen.Active;
+                screenManager.CurrentScreen.CanProcessUserInput = !screenManager.CurrentScreen.CanProcessUserInput;
             }
             if (e.Code == Keyboard.Key.F8) {
                 FaderAction action = gameWindow.fader.Action;

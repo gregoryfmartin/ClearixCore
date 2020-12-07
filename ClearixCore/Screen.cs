@@ -12,7 +12,7 @@ namespace ClearixCore {
 
         public String Name { get; set; }
 
-        public Boolean Active { get; set; }
+        public Boolean CanProcessUserInput { get; set; }
 
         //public Boolean CurrentlyUsed { get; set; }
 
@@ -20,7 +20,7 @@ namespace ClearixCore {
             this.Assets = new AssetManager ();
             this.Entities = new Dictionary<String, Entity> ();
             this.Name = "";
-            this.Active = false;
+            this.CanProcessUserInput = false;
             //CurrentlyUsed = false;
         }
 

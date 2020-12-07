@@ -16,13 +16,13 @@ namespace ClearixCore {
         }
 
         public override void CheckPlayerInputPressed ( Object sender, KeyEventArgs e ) {
-            if (this.Active) {
+            if (this.CanProcessUserInput) {
                 (Entities ["PlayerObject"] as PlayerEntity)?.CheckInputPressed (e);
             }
         }
 
         public override void CheckPlayerInputReleased ( Object sender, KeyEventArgs e ) {
-            if (this.Active) {
+            if (this.CanProcessUserInput) {
                 (Entities ["PlayerObject"] as PlayerEntity)?.CheckInputReleased (e);
             }
         }
