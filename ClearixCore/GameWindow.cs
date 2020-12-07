@@ -21,7 +21,7 @@ namespace ClearixCore {
 
         //private Single deltaCounter;
 
-        public Fader fader;
+        public Fader MyFader;
 
         public GameWindow () : base (new VideoMode (800, 600), "") {
             Renderables = new List<Drawable> ();
@@ -32,7 +32,7 @@ namespace ClearixCore {
             KeyDownHandler += ( s, e ) => { };
             KeyUpHandler += ( s, e ) => { };
 
-            this.fader = new Fader (new Vector2f (900.0f, 700.0f));
+            this.MyFader = new Fader (new Vector2f (900.0f, 700.0f));
             //this.Fader = new RectangleShape (new SFML.System.Vector2f (900.0f, 700.0f));
             //this.fader.FillColor = new Color (255, 255, 255, 0);
 
@@ -43,7 +43,7 @@ namespace ClearixCore {
             //this.deltaCounter += delta;
             //Console.WriteLine ("deltaCounter Value: " + this.deltaCounter.ToString ());
 
-            this.fader.Update (delta);
+            this.MyFader.Update (delta);
             DispatchEvents ();
         }
 
@@ -56,7 +56,7 @@ namespace ClearixCore {
                 }
             }
 
-            this.Draw (this.fader);
+            this.Draw (this.MyFader);
 
             Display ();
         }

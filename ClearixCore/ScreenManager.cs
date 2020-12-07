@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ClearixCore {
     class ScreenManager {
@@ -20,7 +19,7 @@ namespace ClearixCore {
             currentScreen = Screens [0];
         }
 
-        public void ChangeCurrentScreen ( String screenName, GameWindow gameWindow ) {
+        public void ChangeCurrentScreen ( String screenName, ref GameWindow gameWindow ) {
             Boolean foundScreen = false;
             Screen r = null;
 
@@ -45,7 +44,7 @@ namespace ClearixCore {
             }
         }
 
-        public void Update ( Single delta, GameWindow gameWindow ) {
+        public void Update ( Single delta, ref GameWindow gameWindow ) {
             currentScreen.Update (delta);
 
             if (!(gameWindow.Renderables.Find (x => x is Screen && (x as Screen).Equals (currentScreen)) is Screen t)) {

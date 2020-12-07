@@ -46,7 +46,7 @@ namespace ClearixCore {
 
         private void Update () {
             gameWindow.Update (fpsd);
-            screenManager.Update (fpsd, gameWindow);
+            screenManager.Update (fpsd, ref gameWindow);
         }
 
         private void Draw () {
@@ -63,21 +63,21 @@ namespace ClearixCore {
             }
             if (e.Code == Keyboard.Key.F6) {
                 if (screenManager.CurrentScreen.Name.Equals ("SampleScreen")) {
-                    screenManager.ChangeCurrentScreen ("AnotherScreen", gameWindow);
+                    screenManager.ChangeCurrentScreen ("AnotherScreen", ref gameWindow);
                 } else if (screenManager.CurrentScreen.Name.Equals ("AnotherScreen")) {
-                    screenManager.ChangeCurrentScreen ("SampleScreen", gameWindow);
+                    screenManager.ChangeCurrentScreen ("SampleScreen", ref gameWindow);
                 }
             }
             if (e.Code == Keyboard.Key.F7) {
                 screenManager.CurrentScreen.CanProcessUserInput = !screenManager.CurrentScreen.CanProcessUserInput;
             }
             if (e.Code == Keyboard.Key.F8) {
-                FaderAction action = gameWindow.fader.Action;
+                FaderAction action = gameWindow.MyFader.Action;
 
                 if (action == FaderAction.FADING) {
-                    gameWindow.fader.Action = FaderAction.IDLE;
+                    gameWindow.MyFader.Action = FaderAction.IDLE;
                 } else {
-                    gameWindow.fader.Action = FaderAction.FADING;
+                    gameWindow.MyFader.Action = FaderAction.FADING;
                 }
             }
         }
